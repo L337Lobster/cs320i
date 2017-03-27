@@ -9,7 +9,11 @@ class JhofmannController {
         render (view:'index.gsp')
     }
 
-    def self() {  }
+    def self()
+    {
+        def self = User.findByUsername("SamuraiJack365")
+        [self:self]
+    }
 
     def players() {
 

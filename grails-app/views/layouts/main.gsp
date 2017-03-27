@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand"><g:link controller="jhofmann" action="home">7 Days to Die Stats</g:link></a>
+                <a href="${g.createLink(controller:'jhofmann', action:'home')}" class="navbar-brand">7 Days to Die Stats</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">

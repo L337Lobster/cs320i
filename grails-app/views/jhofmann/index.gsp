@@ -26,7 +26,7 @@
             <p>Dictas dolores lobortis at vel, eam ne lucilius perpetua. Et brute facer pro. Everti rationibus sententiae ea nec. Inermis hendrerit neglegentur ea his, no quem dico quo.</p>
             <p>Possit atomorum salutandi vix ut. Ne pri mollis probatus hendrerit, ne usu adhuc sonet. Ei qui graece invidunt intellegat. No qui maluisset aliquando. Choro exerci prodesset duo eu, agam paulo deleniti te mea. Illum veniam nam ut.</p>
         </div>
-        <div class="col-sm-2 well">
+        <div class="col-sm-2">
     </div>
 </div>
 

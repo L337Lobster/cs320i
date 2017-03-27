@@ -12,7 +12,7 @@
 <body>
 
 <div class="container">
-    <h1>Self</h1>
+    <h1>${self.username}</h1>
     <p>This is some text.</p>
 </div>
 
