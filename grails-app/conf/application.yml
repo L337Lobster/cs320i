@@ -109,15 +109,15 @@ environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:mysql://localhost:3306/jhofmann_individual?autoReconnect=true
+            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual?autoReconnect=true
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:mysql://localhost:3306/jhofmann_individual?autoReconnect=true
+            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual?autoReconnect=true
     production:
         dataSource:
             dbCreate: none
-            url: jdbc:mysql://localhost:3306/jhofmann_individual?autoReconnect=true
+            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual?autoReconnect=true
             properties:
                 jmxEnabled: true
                 initialSize: 5

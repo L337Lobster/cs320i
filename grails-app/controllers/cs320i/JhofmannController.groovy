@@ -18,8 +18,6 @@ class JhofmannController {
     def players() {
 
         def users = User.list()
-        println(users.size())
-        println(users[0].firstName)
         [users:users]
     }
 
