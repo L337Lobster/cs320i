@@ -13,7 +13,9 @@
 
 <div class="container">
     <h1>${self.username}</h1>
-    <p>This is some text.</p>
+    <p>First Name: ${self.firstName}</p>
+    <p>Last Name: ${self.lastName}</p>
+    <p>E-Mail: ${self.email}</p>
 </div>
 
 </body>
