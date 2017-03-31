@@ -8,34 +8,44 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
+    <asset:stylesheet src="application.css"/>
+
     <g:layoutHead/>
 </head>
 <body>
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="${g.createLink(controller:'jhofmann', action:'home')}" class="navbar-brand">7 Days to Die Stats</a>
+                <a class="navbar-brand" href="/#">
+                    <i class="fa grails-icon">
+                        <asset:image src="grails-cupsonly-logo-white.svg"/>
+                    </i> Grails
+                </a>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="<g:if test="${page == 'home'}">active</g:if>"><g:link controller="jhofmann" action="home">Home</g:link></li>
-                    <li class="<g:if test="${page == 'players'}">active</g:if>"><g:link controller="jhofmann" action="players">Players</g:link></li>
-                    <li class="<g:if test="${page == 'self'}">active</g:if>"><g:link controller="jhofmann" action="self">Self</g:link></li>
-                </ul>
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="<g:if test="${page == 'login'}">active</g:if>"><g:link controller="jhofmann" action="self"><span class="glyphicon glyphicon-log-in"></span> Login</g:link></li>
+                    <g:pageProperty name="page.nav" />
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
 
     <g:layoutBody/>
+
+    <div class="footer" role="contentinfo"></div>
+
+    <div id="spinner" class="spinner" style="display:none;">
+        <g:message code="spinner.alt" default="Loading&hellip;"/>
+    </div>
+
+    <asset:javascript src="application.js"/>
 
 </body>
 </html>

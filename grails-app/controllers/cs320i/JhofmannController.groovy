@@ -11,14 +11,14 @@ class JhofmannController {
 
     def self()
     {
-        def self = User.findByUsername("SamuraiJack365")
-        [self:self]
+        /*def self = User.findByUsername("SamuraiJack365")
+        [self:self]*/
     }
 
     def players() {
 
-        def users = User.list()
-        [users:users]
+       /* def users = User.list()
+        [users:users]*/
     }
 
 }

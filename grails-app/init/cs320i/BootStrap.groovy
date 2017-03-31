@@ -1,20 +1,24 @@
 package cs320i
 
-import java.sql.Blob
+
 class BootStrap {
 
     def init = { servletContext ->
+        def springSecurityService
+        def adminRole = new Authority(authority: 'ROLE_ADMIN').save()
+        def userRole = new Authority(authority: 'ROLE_USER').save()
 
-        if(User.count() == 0)
-        {
-            def encrypt = new PasswordEncryptionService()
-            def salt = encrypt.generateSalt()
-            byte[] encryptedPassword = encrypt.getEncryptedPassword("password", salt)
-            Blob storePassword = encrypt.getBlobPassword(encryptedPassword)
-            new User(username: 'SamuraiJack365', password: storePassword, firstName: 'Jackson', lastName: 'Hofmann', email: 'jazzycool9@gmail.com').save()
-            new User(username: 'SamuraiJack',  password: storePassword, firstName: 'Jason', lastName: 'Hofmann', email: 'jazzy@gmail.com').save()
-            new User(username: 'Samurai', password: storePassword, firstName: 'Jack', lastName: 'Hofmann', email: 'cool9@gmail.com').save()
+        def testUser = new Player(username: 'herp', password: 'derp').save()
+        PlayerAuthority.create testUser, adminRole
+
+        PlayerAuthority.withSession {
+            it.flush()
+            it.clear()
         }
+
+        assert Player.count() == 1
+        assert Authority.count() == 2
+        assert PlayerAuthority.count() == 1
     }
     def destroy = {
     }
