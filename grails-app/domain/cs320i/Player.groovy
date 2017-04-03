@@ -1,5 +1,6 @@
 package cs320i
 
+import grails.plugin.springsecurity.SpringSecurityService
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
@@ -9,7 +10,7 @@ class Player implements Serializable {
 
 	private static final long serialVersionUID = 1
 
-	transient springSecurityService
+	transient springSecurityService = new SpringSecurityService()
 
 	String username
 	String password
@@ -23,6 +24,7 @@ class Player implements Serializable {
 	}
 
 	def beforeInsert() {
+		println(SpringSecurityService.encodePassword("derp"))
 		encodePassword()
 	}
 
