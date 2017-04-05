@@ -10,7 +10,8 @@ class Player implements Serializable {
 
 	private static final long serialVersionUID = 1
 
-	transient springSecurityService = new SpringSecurityService()
+	transient springSecurityService
+	transient bEncoded
 
 	String username
 	String password
@@ -19,12 +20,20 @@ class Player implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 
+
+	static transients = ['springSecurityService', 'bEncoded']
+
 	Set<Authority> getAuthorities() {
 		PlayerAuthority.findAllByPlayer(this)*.authority
 	}
 
+	def addAuthority(String role){
+		Authority auth = Authority.findByAuthority(role)
+		if(auth && !getAuthorities().contains(auth)) PlayerAuthority.create(this, auth)
+	}
+
 	def beforeInsert() {
-		println(SpringSecurityService.encodePassword("derp"))
+//		println(SpringSecurityService.encodePassword("derp"))
 		encodePassword()
 	}
 
@@ -34,10 +43,13 @@ class Player implements Serializable {
 		}
 	}
 	protected void encodePassword() {
-		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
+		println springSecurityService == null
+//		println springSecurityService.passwordEncoder
+		if(!bEncoded){
+			password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
+			bEncoded = springSecurityService?.passwordEncoder ? true : false
+		}
 	}
-
-	static transients = ['springSecurityService']
 
 	static constraints = {
 		password blank: false, password: true

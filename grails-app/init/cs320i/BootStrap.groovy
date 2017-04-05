@@ -1,19 +1,28 @@
 package cs320i
 
+import org.springframework.web.context.support.WebApplicationContextUtils
 
 class BootStrap {
 
+    def springSecurityService
+//springSecurityService null error fixed with the help of Mat Jones who helped re-write the withTransaction lines
     def init = { servletContext ->
-        def springSecurityService
-        def adminRole = new Authority(authority: 'ROLE_ADMIN').save()
-        def userRole = new Authority(authority: 'ROLE_USER').save()
+        def adminRole
+        def userRole
+        Authority.withTransaction {
+            adminRole = new Authority(authority: 'ROLE_ADMIN')
+            adminRole.save()
+            userRole = new Authority(authority: 'ROLE_USER')
+            userRole.save()
+        }
 
-        def testUser = new Player(username: 'herp', password: 'derp').save()
-        PlayerAuthority.create testUser, adminRole
-
-        PlayerAuthority.withSession {
-            it.flush()
-            it.clear()
+        def testUser
+        Player.withTransaction {
+            testUser = new Player(username: 'herp', password: 'derp')
+            testUser.springSecurityService = springSecurityService
+            testUser.save()
+            def auth = testUser.addAuthority('ROLE_ADMIN')
+            auth.save()
         }
 
         assert Player.count() == 1
