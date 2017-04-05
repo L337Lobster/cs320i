@@ -15,6 +15,7 @@ class Player implements Serializable {
 
 	String username
 	String password
+    String firstName, lastName, email
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked

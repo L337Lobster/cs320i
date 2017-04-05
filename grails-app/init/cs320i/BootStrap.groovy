@@ -18,7 +18,7 @@ class BootStrap {
 
         def testUser
         Player.withTransaction {
-            testUser = new Player(username: 'herp', password: 'derp')
+            testUser = new Player(username: 'SamuraiJack365', password: 'derp', firstName: 'Jackson', lastName: 'Hofmann', email: 'jazzycool9@gmail.com')
             testUser.springSecurityService = springSecurityService
             testUser.save()
             def auth = testUser.addAuthority('ROLE_ADMIN')
