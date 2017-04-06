@@ -11,12 +11,14 @@ class JhofmannController {
         render (view:'index.gsp')
     }
 
+    @Secured('ROLE_USER')
     def self()
     {
-        def self = Player.findByUsername("SamuraiJack365")
+        String username = getPrincipal().username
+        def self = Player.findByUsername(username)
         [self:self]
     }
-
+    @Secured('ROLE_USER')
     def players() {
 
        def users = Player.list()

@@ -21,13 +21,14 @@ class BootStrap {
             testUser = new Player(username: 'SamuraiJack365', password: 'derp', firstName: 'Jackson', lastName: 'Hofmann', email: 'jazzycool9@gmail.com')
             testUser.springSecurityService = springSecurityService
             testUser.save()
+            testUser.addAuthority('ROLE_USER')
             def auth = testUser.addAuthority('ROLE_ADMIN')
             auth.save()
         }
 
         assert Player.count() == 1
         assert Authority.count() == 2
-        assert PlayerAuthority.count() == 1
+        assert PlayerAuthority.count() == 2
     }
     def destroy = {
     }
