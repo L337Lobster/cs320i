@@ -34,7 +34,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 <sec:ifLoggedIn> <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></sec:ifLoggedIn>
-                <sec:ifNotLoggedIn><li class=""><g:link controller="jhofmann" action="self"><span class="glyphicon glyphicon-log-in"></span> Login</g:link></li></sec:ifNotLoggedIn>
+                <sec:ifNotLoggedIn><li class="${ pageProperty(name:'meta.nav').equals( 'login' ) ? 'active' : null }"><g:link controller="jhofmann" action="self"><span class="glyphicon glyphicon-log-in"></span> Login</g:link></li></sec:ifNotLoggedIn>
                 </ul>
             </div>
         </div>
