@@ -26,19 +26,19 @@
                     <th colspan="7">
                         <span class="btn-group">
 
-                            <p style="margin-left: 48px;">${month} 2012</p>
+                            <p style="margin-left: 48px;">${calendar.month} ${calendar.year}</p>
 
                         </span>
                     </th>
                 </tr>
                 <tr>
-                    <th>Su</th>
-                    <th>Mo</th>
-                    <th>Tu</th>
-                    <th>We</th>
-                    <th>Th</th>
-                    <th>Fr</th>
-                    <th>Sa</th>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
                 </tr>
                 </thead>
                 <tbody>

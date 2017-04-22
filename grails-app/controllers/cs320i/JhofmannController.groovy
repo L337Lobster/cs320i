@@ -16,14 +16,16 @@ class JhofmannController {
     def calendar()
     {
         Calendar calendar = Calendar.getInstance()
-        def Currentmonth = Month.JANUARY.toString(calendar.get(Calendar.MONTH))
-        def currentDayOfWeek = DayOfWeek.FRIDAY.toString(calendar.get(Calendar.DAY_OF_WEEK))
-        def currentDay = calendar.get(Calendar.DAY_OF_MONTH)
-        def maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        def currentCalendar = new CurCal()
+        currentCalendar.currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+        currentCalendar.month = Month.JANUARY.toString(calendar.get(Calendar.MONTH))
+        currentCalendar.dayOfWeek = DayOfWeek.FRIDAY.toString(calendar.get(Calendar.DAY_OF_WEEK))
+        currentCalendar.lastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        currentCalendar.year = calendar.get(Calendar.YEAR)
         calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
-        String firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-        println Currentmonth
-        [month:maxDay]
+        currentCalendar.firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+
+        [calendar: currentCalendar]
     }
     @Secured('ROLE_USER')
     def student() {
