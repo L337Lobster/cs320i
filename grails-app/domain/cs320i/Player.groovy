@@ -1,6 +1,5 @@
 package cs320i
 
-import grails.plugin.springsecurity.SpringSecurityService
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
@@ -16,6 +15,7 @@ class Player implements Serializable {
 	String username
 	String password
     String firstName, lastName, email
+	static hasOne = [calendar: MyCalendar]
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -44,8 +44,6 @@ class Player implements Serializable {
 		}
 	}
 	protected void encodePassword() {
-		println springSecurityService == null
-//		println springSecurityService.passwordEncoder
 		if(!bEncoded){
 			password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 			bEncoded = springSecurityService?.passwordEncoder ? true : false

@@ -1,7 +1,5 @@
 package cs320i
 
-import org.springframework.web.context.support.WebApplicationContextUtils
-
 class BootStrap {
 
     def springSecurityService
@@ -16,9 +14,10 @@ class BootStrap {
             userRole.save()
         }
 
+        def calendar = new MyCalendar()
         def testUser
         Player.withTransaction {
-            testUser = new Player(username: 'SamuraiJack365', password: 'derp', firstName: 'Jackson', lastName: 'Hofmann', email: 'jazzycool9@gmail.com')
+            testUser = new Player(username: 'SamuraiJack365', password: 'derp', firstName: 'Jackson', lastName: 'Hofmann', email: 'jazzycool9@gmail.com', calendar: calendar)
             testUser.springSecurityService = springSecurityService
             testUser.save()
             testUser.addAuthority('ROLE_USER')

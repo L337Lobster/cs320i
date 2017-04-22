@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main2" />
-        <g:set var="entityName" dayValue="${message(code: 'authority.label', default: 'Authority')}" />
+        <g:set var="entityName" value="${message(code: 'authority.label', default: 'Authority')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -30,7 +30,7 @@
                     <f:all bean="authority"/>
                 </fieldset>
                 <fieldset class="buttons">
-                    <g:submitButton name="create" class="save" dayValue="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>
         </div>

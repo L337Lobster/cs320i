@@ -4,7 +4,8 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class JhofmannController {
 
-    def index() { }
+    def index() {
+    }
 
     def home()
     {
@@ -12,15 +13,20 @@ class JhofmannController {
     }
 
     @Secured('ROLE_USER')
-    def self()
+    def calendar()
     {
-        String username = getPrincipal().username
-        def self = Player.findByUsername(username)
-        [self:self]
+        Calendar calendar = Calendar.getInstance()
+        def Currentmonth = Month.JANUARY.toString(calendar.get(Calendar.MONTH))
+        def currentDayOfWeek = DayOfWeek.FRIDAY.toString(calendar.get(Calendar.DAY_OF_WEEK))
+        def currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+        def maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
+        String firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        println Currentmonth
+        [month:maxDay]
     }
     @Secured('ROLE_USER')
-    def players() {
-
+    def student() {
        def users = Player.list()
         [users:users]
     }
