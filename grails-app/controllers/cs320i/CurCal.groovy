@@ -7,12 +7,14 @@ class CurCal {
 
     DayOfWeek dayOfWeek
     int lastDay
+    int lastDayPrevMonth
     def currentDay
-    def firstDayOfWeek
+    int firstDayOfWeek
     Month month
     def year
     def table = new int[6][7]
     int nextMonth
+    int prevMonth
     Calendar calendar
 
     CurCal()
@@ -35,6 +37,11 @@ class CurCal {
         calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
         //get the first day of the week of the month
         this.firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        prevMonth = firstDayOfWeek - 1
+        //set the calendar to last month
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-1)
+        //add one to last day for ease of calculations later
+        lastDayPrevMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
         generateTable()
     }
     def generateTable()
@@ -62,6 +69,14 @@ class CurCal {
             }
 
         }
+        if(prevMonth > 0)
+        {
+            for(int i = prevMonth-1; i >= 0; i--)
+            {
+                table[0][i] = lastDayPrevMonth--
+            }
+        }
+        print table
 
     }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,9 +12,9 @@
     <g:layoutHead/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -34,13 +34,13 @@
                         <g:link controller="jhofmann" action="home">Home</g:link>
                     </li>
                     <sec:ifLoggedIn>
-                        <li class="${ pageProperty(name:'meta.nav').equals( 'Student' ) ? 'active' : null }">
+                        <li class="${ pageProperty(name:'meta.nav').equals( 'student' ) ? 'active' : null }">
                             <g:link controller="jhofmann" action="student">Student</g:link>
                         </li>
-                    </sec:ifLoggedIn>
-                        <li class="${ pageProperty(name:'meta.nav').equals( 'MyCalendar' ) ? 'active' : null }">
+                        <li class="${ pageProperty(name:'meta.nav').equals( 'calendar' ) ? 'active' : null }">
                             <g:link controller="jhofmann" action="calendar">Calendar</g:link>
                         </li>
+                    </sec:ifLoggedIn>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:ifLoggedIn>

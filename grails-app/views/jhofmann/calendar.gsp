@@ -47,7 +47,8 @@
                                         <td class="text-muted not-current">${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
                                     </g:if>
                                     <g:else>
-                                        <td <g:if test="${ calendar.table[i][j] == calendar.currentDay}"> class="btn-primary"</g:if> <g:elseif test="${ calendar.table[i][j] == 0}">class="text-muted not-current"</g:elseif> >${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
+                                        <td <g:if test="${ calendar.table[i][j] == calendar.currentDay}"> class="btn-primary"</g:if>
+                                            <g:elseif test="${ (i == 0) && (j < calendar.firstDayOfWeek-1)}">class="text-muted not-current"</g:elseif> >${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
                                     </g:else>
                                 </g:each>
                             </tr>

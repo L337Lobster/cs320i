@@ -6,7 +6,7 @@ class CalendarEntry {
     Month month
     def year
     EntryType type
-    def calID
+    double grade
 
     static constraints = {
         day max:31, min:1, blank: false
