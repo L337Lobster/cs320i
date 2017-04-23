@@ -16,13 +16,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4"></div>
-            <h1 class="col-sm-4">7 Days to Die Stats</h1>
+            <h1 class="text-center col-sm-4">Calendar</h1>
             <div class="col-sm-4"></div>
         </div>
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8 well">
-                <table class="table-condensed table-bordered table-striped">
+                <table class="table-condensed table-bordered table-calendar">
                     <thead>
                         <tr>
                             <th colspan="7">
@@ -43,7 +43,12 @@
                         <g:each var="i" in="${0..5}">
                             <tr>
                                 <g:each var="j" in="${0..6}">
-                                    <td <g:if test="${ calendar.table[i][j] == calendar.currentDay}"> class="btn-primary"</g:if> >${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
+                                    <g:if test="${ (i==5) && (j > calendar.nextMonth)}">
+                                        <td class="text-muted not-current">${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
+                                    </g:if>
+                                    <g:else>
+                                        <td <g:if test="${ calendar.table[i][j] == calendar.currentDay}"> class="btn-primary"</g:if> <g:elseif test="${ calendar.table[i][j] == 0}">class="text-muted not-current"</g:elseif> >${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
+                                    </g:else>
                                 </g:each>
                             </tr>
                         </g:each>

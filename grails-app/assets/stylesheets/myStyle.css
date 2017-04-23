@@ -1,50 +1,69 @@
 /* overriding main.css*/
-th:hover, tr:hover {
+
+th:hover,
+tr:hover {
     background: gainsboro;
 }
 
+
 /* customizing bootstrap nav bar to override grails.css*/
+
 .navbar {
     margin-bottom: 0px;
     padding-right: 110px;
 }
+
 .navbar .container {
     margin: 10px;
 }
+
 .navbar-default a {
     color: black !important;
     font-size: 18px !important;
     text-decoration: none;
 }
+
 .grails-icon img {
     width: 40px;
 }
-.navbar-default, .navbar-static-top {
+
+.navbar-default,
+.navbar-static-top {
     background-color: #4D8618;
     border: 0px;
 }
+
 a.navbar-brand {
     color: black !important;
     font-size: 19px !important;
 }
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
     background-color: transparent;
     color: black;
 }
+
 .navbar-nav>li.active>a {
     color: black !important;
 }
+
 .navbar-nav>li>a:hover {
     background-color: gainsboro !important;
     color: black !important;
 }
+
 .navbar-nav>li>a {
     color: black;
 }
+
 .navbar-default .navbar-toggle .icon-bar {
     background-color: white;
 }
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
     background-color: gainsboro;
 }
 
@@ -54,6 +73,18 @@ a.navbar-brand {
     }
 }
 
-table.calendar {
+.table-calendar {
+    background-color: #FFFFFF
+}
 
+.not-current {
+    background-color: #F5F5F5
+}
+
+th:hover {
+    background-color: #FFFFFF
+}
+
+tr:hover {
+    background-color: #FFFFFF
 }

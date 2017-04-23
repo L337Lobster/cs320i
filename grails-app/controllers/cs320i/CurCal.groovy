@@ -12,6 +12,7 @@ class CurCal {
     Month month
     def year
     def table = new int[6][7]
+    int nextMonth
     Calendar calendar
 
     CurCal()
@@ -55,13 +56,12 @@ class CurCal {
                 }
                 if(count > lastDay)
                 {
+                    nextMonth = j
                     count = 1
                 }
             }
-            println count
 
         }
-        println table
 
     }
 
