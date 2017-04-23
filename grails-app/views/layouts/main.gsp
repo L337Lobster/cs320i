@@ -37,10 +37,10 @@
                         <li class="${ pageProperty(name:'meta.nav').equals( 'Student' ) ? 'active' : null }">
                             <g:link controller="jhofmann" action="student">Student</g:link>
                         </li>
+                    </sec:ifLoggedIn>
                         <li class="${ pageProperty(name:'meta.nav').equals( 'MyCalendar' ) ? 'active' : null }">
                             <g:link controller="jhofmann" action="calendar">Calendar</g:link>
                         </li>
-                    </sec:ifLoggedIn>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:ifLoggedIn>
