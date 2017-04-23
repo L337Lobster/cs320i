@@ -12,7 +12,7 @@ class JhofmannController {
         render (view:'index.gsp')
     }
 
-    //@Secured('ROLE_USER')
+    @Secured('ROLE_USER')
     def calendar()
     {
         def currentCalendar = new CurCal()
