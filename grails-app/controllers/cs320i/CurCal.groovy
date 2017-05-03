@@ -16,9 +16,12 @@ class CurCal {
     int nextMonth
     int prevMonth
     Calendar calendar
+    MyCalendar myCalendar
+    def monthMyCal = new ArrayList<CalendarEntry>()
 
-    CurCal(String option, Month current, String year)
+    CurCal(MyCalendar myCal, String option, Month current, String year)
     {
+        myCalendar = myCal
         //get current date
         if(option.equalsIgnoreCase("current")) {
             calendar = Calendar.getInstance()
@@ -32,7 +35,7 @@ class CurCal {
         else if(option.equalsIgnoreCase("next"))
         {
             calendar = Calendar.getInstance()
-            calendar.set(Calendar.MONTH, (current.getMonthValue() < 12 ? current.getMonthValue() : 0))
+            calendar.set(Calendar.MONTH, ((int)current.getMonthValue() < 12 ? current.getMonthValue() : 0))
             calendar.set(Calendar.YEAR, (current.getMonthValue() == 12 ? year.toInteger()+1 : year.toInteger()))
         }
         //get and set current day to today's numerical day
@@ -56,10 +59,12 @@ class CurCal {
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-1)
         //add one to last day for ease of calculations later
         lastDayPrevMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        getCurrentMonthEntries()
         generateTable()
     }
-    CurCal()
+    CurCal(MyCalendar myCal)
     {
+        myCalendar = myCal
         //get current date
         calendar = Calendar.getInstance()
         //get and set current day to today's numerical day
@@ -83,7 +88,19 @@ class CurCal {
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-1)
         //add one to last day for ease of calculations later
         lastDayPrevMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        getCurrentMonthEntries()
         generateTable()
+    }
+    def getCurrentMonthEntries()
+    {
+        println(myCalendar.entries.size())
+        for(int i = 0; i < myCalendar.entries.size(); i++)
+        {
+            if(myCalendar.entries[i].month == this.month)
+            {
+                monthMyCal.add(myCalendar.entries[i])
+            }
+        }
     }
     def generateTable()
     {

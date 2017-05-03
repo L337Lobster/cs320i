@@ -2,12 +2,25 @@ package cs320i
 
 class CalendarEntry {
 
-    def day
+    int day
     Month month
-    def year
+    int year
     EntryType type
+    String title
     double grade
 
+    CalendarEntry()
+    {
+
+    }
+    CalendarEntry(String title, String type, int day, int month, int year)
+    {
+        this.day = day
+        this.month = Month.APRIL.toString(month).toUpperCase() as Month
+        this.year = year
+        this.title = title
+        this.type = type as EntryType
+    }
     static constraints = {
         day max:31, min:1, blank: false
         year min:1000, blank: false
