@@ -9,10 +9,6 @@ class CalendarEntry {
     String title
     double grade
 
-    CalendarEntry()
-    {
-
-    }
     CalendarEntry(String title, String type, int day, int month, int year)
     {
         this.day = day
