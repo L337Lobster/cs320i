@@ -122,7 +122,7 @@ environments:
             url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual_test?autoReconnect=true
     production:
         dataSource:
-            dbCreate: none
+            dbCreate: create
             url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual_deploy?autoReconnect=true
             properties:
                 jmxEnabled: true
