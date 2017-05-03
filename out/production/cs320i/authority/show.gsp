@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main2" />
-        <g:set var="entityName" value="${message(code: 'authority.label', default: 'Authority')}" />
+        <g:set var="entityName" dayValue="${message(code: 'authority.label', default: 'Authority')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,7 +23,7 @@
             <g:form resource="${this.authority}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.authority}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <input class="delete" type="submit" dayValue="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
         </div>

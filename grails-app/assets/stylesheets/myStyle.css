@@ -1,11 +1,22 @@
 .table-calendar {
     background-color: #FFFFFF;
 }
-
+.table-calendar table{
+    width: 100%;
+}
 .table-calendar td {
     height: 50px;
 }
 
 .not-current {
     background-color: #F5F5F5;
+}
+
+.table-calendar th {
+    vertical-align: middle;
+    text-align: center;
+    border: none !important;
+}
+.table-calendar td {
+    width: 14%;
 }

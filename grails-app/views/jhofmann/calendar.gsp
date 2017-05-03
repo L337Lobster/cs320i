@@ -25,8 +25,22 @@
                 <table class="table-condensed table-bordered table-calendar">
                     <thead>
                         <tr>
-                            <th colspan="7">
+                            <th colspan="2">
+                                <g:link action="calendar" controller="jhofmann" params="[option: 'prev', month: calendar.month, year: calendar.year]">
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                                    </button>
+                                </g:link>
+                            </th>
+                            <th colspan="3">
                                 <h3 class="text-center">${calendar.month} ${calendar.year}</h3>
+                            </th>
+                            <th colspan="2">
+                                <g:link action="calendar" controller="jhofmann" params="[option: 'next', month: calendar.month, year: calendar.year]">
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                    </button>
+                                </g:link>
                             </th>
                         </tr>
                         <tr>

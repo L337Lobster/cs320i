@@ -1,4 +1,6 @@
 ---
+server:
+        port: 8080
 grails:
     profile: web
     codegen:
@@ -109,15 +111,19 @@ environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual?autoReconnect=true
+            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual_dev?autoReconnect=true
+    development2:
+            dataSource:
+                dbCreate: create-drop
+                url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual_dev2?autoReconnect=true
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual?autoReconnect=true
+            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual_test?autoReconnect=true
     production:
         dataSource:
             dbCreate: none
-            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual?autoReconnect=true
+            url: jdbc:mysql://mysql.jhofmann1.xyz:3306/jhofmann_individual_deploy?autoReconnect=true
             properties:
                 jmxEnabled: true
                 initialSize: 5

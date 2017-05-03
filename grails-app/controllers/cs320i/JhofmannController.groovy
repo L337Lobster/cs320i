@@ -15,7 +15,14 @@ class JhofmannController {
     @Secured('ROLE_USER')
     def calendar()
     {
-        def currentCalendar = new CurCal()
+        def currentCalendar
+        if(params.option != null && params.month != null && params.year != null)
+        {
+            currentCalendar = new CurCal((String)params.option, (Month)((String)params.month.toUpperCase()), (String)params.year)
+        }
+        else{
+            currentCalendar = new CurCal()
+        }
         [calendar: currentCalendar]
     }
     @Secured('ROLE_USER')

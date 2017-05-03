@@ -17,6 +17,47 @@ class CurCal {
     int prevMonth
     Calendar calendar
 
+    CurCal(String option, Month current, String year)
+    {
+        //get current date
+        if(option.equalsIgnoreCase("current")) {
+            calendar = Calendar.getInstance()
+        }
+        else if(option.equalsIgnoreCase("prev"))
+        {
+            calendar = Calendar.getInstance()
+            calendar.set(Calendar.MONTH, current.getMonthValue()-2)
+            calendar.set(Calendar.YEAR, year.toInteger())
+        }
+        else if(option.equalsIgnoreCase("next"))
+        {
+            calendar = Calendar.getInstance()
+            calendar.set(Calendar.MONTH, (current.getMonthValue() < 12 ? current.getMonthValue() : 0))
+            calendar.set(Calendar.YEAR, (current.getMonthValue() == 12 ? year.toInteger()+1 : year.toInteger()))
+        }
+        //get and set current day to today's numerical day
+        this.currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+        //get and set the current month
+        Month month = Month.JANUARY.toString(calendar.get(Calendar.MONTH)).toUpperCase() as Month
+        this.month = month
+        //get and set the current day of the week eg. Monday
+        DayOfWeek dayOfWeek = DayOfWeek.FRIDAY.toString(calendar.get(Calendar.DAY_OF_WEEK)).toUpperCase() as DayOfWeek
+        this.dayOfWeek = dayOfWeek
+        //get and set the last numerical day of the month
+        this.lastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        //get and set the current year
+        this.year = calendar.get(Calendar.YEAR)
+        //set the calendar to the first day of the month
+        calendar.set(java.util.Calendar.DAY_OF_MONTH, 1)
+        //get the first day of the week of the month
+        this.firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        prevMonth = firstDayOfWeek - 1
+        //set the calendar to last month
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-1)
+        //add one to last day for ease of calculations later
+        lastDayPrevMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        generateTable()
+    }
     CurCal()
     {
         //get current date
@@ -76,7 +117,6 @@ class CurCal {
                 table[0][i] = lastDayPrevMonth--
             }
         }
-        print table
 
     }
 

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main2" />
-        <g:set var="entityName" value="${message(code: 'authority.label', default: 'Authority')}" />
+        <g:set var="entityName" dayValue="${message(code: 'authority.label', default: 'Authority')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -27,12 +27,12 @@
             </ul>
             </g:hasErrors>
             <g:form resource="${this.authority}" method="PUT">
-                <g:hiddenField name="version" value="${this.authority?.version}" />
+                <g:hiddenField name="version" dayValue="${this.authority?.version}" />
                 <fieldset class="form">
                     <f:all bean="authority"/>
                 </fieldset>
                 <fieldset class="buttons">
-                    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                    <input class="save" type="submit" dayValue="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
             </g:form>
         </div>
