@@ -10,7 +10,9 @@ class CurCal {
     int lastDayPrevMonth
     def currentDay
     int firstDayOfWeek
+    int lastRowOfMonth
     Month month
+    Month curMonth
     def year
     def table = new int[6][7]
     int nextMonth
@@ -25,16 +27,22 @@ class CurCal {
         //get current date
         if(option.equalsIgnoreCase("current")) {
             calendar = Calendar.getInstance()
+            Month curMonth = Month.JANUARY.toString(calendar.get(Calendar.MONTH)).toUpperCase() as Month
+            this.curMonth = curMonth
         }
         else if(option.equalsIgnoreCase("prev"))
         {
             calendar = Calendar.getInstance()
+            Month curMonth = Month.JANUARY.toString(calendar.get(Calendar.MONTH)).toUpperCase() as Month
+            this.curMonth = curMonth
             calendar.set(Calendar.MONTH, current.getMonthValue()-2)
             calendar.set(Calendar.YEAR, year.toInteger())
         }
         else if(option.equalsIgnoreCase("next"))
         {
             calendar = Calendar.getInstance()
+            Month curMonth = Month.JANUARY.toString(calendar.get(Calendar.MONTH)).toUpperCase() as Month
+            this.curMonth = curMonth
             calendar.set(Calendar.MONTH, ((int)current.getMonthValue() < 12 ? current.getMonthValue() : 0))
             calendar.set(Calendar.YEAR, (current.getMonthValue() == 12 ? year.toInteger()+1 : year.toInteger()))
         }
@@ -43,6 +51,7 @@ class CurCal {
         //get and set the current month
         Month month = Month.JANUARY.toString(calendar.get(Calendar.MONTH)).toUpperCase() as Month
         this.month = month
+        getCurrentMonthEntries()
         //get and set the current day of the week eg. Monday
         DayOfWeek dayOfWeek = DayOfWeek.FRIDAY.toString(calendar.get(Calendar.DAY_OF_WEEK)).toUpperCase() as DayOfWeek
         this.dayOfWeek = dayOfWeek
@@ -59,7 +68,6 @@ class CurCal {
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-1)
         //add one to last day for ease of calculations later
         lastDayPrevMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-        getCurrentMonthEntries()
         generateTable()
     }
     CurCal(MyCalendar myCal)
@@ -72,6 +80,8 @@ class CurCal {
         //get and set the current month
         Month month = Month.JANUARY.toString(calendar.get(Calendar.MONTH)).toUpperCase() as Month
         this.month = month
+        this.curMonth = month
+        getCurrentMonthEntries()
         //get and set the current day of the week eg. Monday
         DayOfWeek dayOfWeek = DayOfWeek.FRIDAY.toString(calendar.get(Calendar.DAY_OF_WEEK)).toUpperCase() as DayOfWeek
         this.dayOfWeek = dayOfWeek
@@ -88,12 +98,10 @@ class CurCal {
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH)-1)
         //add one to last day for ease of calculations later
         lastDayPrevMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
-        getCurrentMonthEntries()
         generateTable()
     }
     def getCurrentMonthEntries()
     {
-        println(myCalendar.entries.size())
         for(int i = 0; i < myCalendar.entries.size(); i++)
         {
             if(myCalendar.entries[i].month == this.month)
@@ -112,6 +120,7 @@ class CurCal {
             {
                 if(count2 < start-1)
                 {
+                    println("Count2: " + count2 +" start: " + start)
                     table[i][j] = 0
                     count2++
                 }
@@ -122,6 +131,10 @@ class CurCal {
                 if(count > lastDay)
                 {
                     nextMonth = j
+                    if(lastRowOfMonth  == 0 || lastRowOfMonth == null)
+                    {
+                        lastRowOfMonth = i
+                    }
                     count = 1
                 }
             }
@@ -134,6 +147,15 @@ class CurCal {
                 table[0][i] = lastDayPrevMonth--
             }
         }
+        else if(prevMonth == 0)
+        {
+            if (table[0][0] == 0)
+            {
+                table[0][0] = lastDayPrevMonth
+            }
+        }
+
+        println("" + month + ": " + table)
 
     }
 

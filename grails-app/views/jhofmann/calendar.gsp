@@ -57,16 +57,33 @@
                         <g:each var="i" in="${0..5}">
                             <tr>
                                 <g:each var="j" in="${0..6}">
-                                    <g:if test="${ calendar.table[i][j] < 20 && i > 3}">
-                                        <td class="text-muted not-current">${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
+                                    <g:set var="cellClass" value="" />
+                                    <g:if test="${
+                                                    (
+                                                        (calendar.table[i][j] < calendar.lastDay && i > calendar.lastRowOfMonth) ||
+                                                        (calendar.table[i][j] < calendar.lastDay && i == 5 && j > calendar.nextMonth) ||
+                                                        (calendar.table[i][j] < calendar.lastDay && j > calendar.nextMonth && i >= calendar.lastRowOfMonth)
+                                                     ) ||
+                                                    (
+                                                        (i == 0 && j < calendar.firstDayOfWeek-1) ||
+                                                        (i == 0 && j == 0 && calendar.table[i][i] > 1)
+                                                    )
+                                                }">
+                                        <g:set var="cellClass" value="text-muted not-current" />
                                     </g:if>
                                     <g:else>
-                                        <td <g:if test="${ calendar.table[i][j] == calendar.currentDay && (calendar.table[i][j] < 20 && i < 2)}"> class="btn-primary"</g:if>
-                                            <g:elseif test="${ ((i == 0) && (j < calendar.firstDayOfWeek-1)) || calendar.table[i][j] == null}">class="text-muted not-current"</g:elseif>
-                                            <g:elseif test="${ calendar.monthMyCal[i]?.day == calendar.table[i][j]}"> class="btn-success"</g:elseif>
-                                        >${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
+                                        <g:if test="${ (calendar.table[i][j] == calendar.currentDay) && (calendar.month == calendar.curMonth) && (calendar.table[i][j] < 20 && i < 2)}">
+                                            <g:set var="cellClass" value="btn-primary" />
+                                        </g:if>
+                                        <g:each var="m" in="${0..calendar.monthMyCal.size()}">
+                                            <g:if test="${ calendar.monthMyCal[m]?.day == calendar.table[i][j]}">
+                                                <g:set var="cellClass" value="btn-success" />
+                                            </g:if>
+                                        </g:each>
                                     </g:else>
+                                    <td class="${cellClass}">${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
                                 </g:each>
+                                <!-- ${calendar.firstDayOfWeek} ${calendar.prevMonth}-->
                             </tr>
                         </g:each>
                     </tbody>
