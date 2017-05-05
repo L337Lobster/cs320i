@@ -18,7 +18,7 @@
     <g:form name="saveAddCal" action="saveAddCal">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" class="form-control">
+            <input type="text" id="title" name="title" class="form-control" autofocus>
             <label for="type">Entry Type:</label>
             <select class="form-control" name="type" id="type">
                 <g:each in="${type}">

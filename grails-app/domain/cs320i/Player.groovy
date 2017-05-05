@@ -53,6 +53,7 @@ class Player implements Serializable {
 	static constraints = {
 		password blank: false, password: true
 		username blank: false, unique: true
+		calendar unique: true
 	}
 
 	static mapping = {

@@ -78,12 +78,15 @@
                                         <g:each var="m" in="${0..calendar.monthMyCal.size()}">
                                             <g:if test="${ calendar.monthMyCal[m]?.day == calendar.table[i][j]}">
                                                 <g:set var="cellClass" value="btn-success" />
+                                                <g:set var="cellLink" value="${calendar.monthMyCal[m]}" />
                                             </g:if>
                                         </g:each>
+                                        <g:if test="${(cellClass == 'btn-success') && (calendar.table[i][j] == calendar.currentDay) && (calendar.month == calendar.curMonth) && (calendar.table[i][j] < 20 && i < 2)}">
+                                            <g:set var="cellClass" value="btn-info" />
+                                        </g:if>
                                     </g:else>
                                     <td class="${cellClass}">${ calendar.table[i][j] == 0 ? null : calendar.table[i][j]}</td>
                                 </g:each>
-                                <!-- ${calendar.firstDayOfWeek} ${calendar.prevMonth}-->
                             </tr>
                         </g:each>
                     </tbody>
