@@ -14,7 +14,7 @@
 
 <body>
 <div class="container">
-    <h1>I Think it added?</h1>
+    <h1>Entry Added!</h1>
 </body>
 
 </html>

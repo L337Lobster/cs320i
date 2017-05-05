@@ -8,7 +8,7 @@ class CalendarEntry {
     EntryType type
     String title
     double grade
-
+    static belongsTo = [myCalendar: MyCalendar]
     CalendarEntry(String title, String type, int day, int month, int year)
     {
         this.day = day
@@ -21,6 +21,5 @@ class CalendarEntry {
         day max:31, min:1, blank: false
         year min:1000, blank: false
         month blank: false
-        type blank: false
     }
 }

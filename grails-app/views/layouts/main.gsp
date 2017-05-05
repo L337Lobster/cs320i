@@ -8,6 +8,7 @@
         <g:layoutTitle default="Grails" />
     </title>
     <asset:stylesheet src="application.css" />
+    <asset:javascript src="application.js"/>
 
     <g:layoutHead/>
     <meta charset="utf-8">
@@ -37,8 +38,14 @@
                         <li class="${ pageProperty(name:'meta.nav').equals( 'student' ) ? 'active' : null }">
                             <g:link controller="jhofmann" action="student">Student</g:link>
                         </li>
-                        <li class="${ pageProperty(name:'meta.nav').equals( 'calendar' ) ? 'active' : null }">
-                            <g:link controller="jhofmann" action="calendar">Calendar</g:link>
+                        <li class="dropdown ${ pageProperty(name:'meta.nav').equals( 'calendar' ) ? 'active' : null }">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Calendar
+                        <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                            <li><g:link controller="jhofmann" action="calendar">By Month</g:link></li>
+                                <li><g:link controller="jhofmann" action="student">Overview</g:link></li>
+                                <li><g:link action="addCal" controller="jhofmann">Add Entry</g:link></li>
+                            </ul>
                         </li>
                     </sec:ifLoggedIn>
                 </ul>

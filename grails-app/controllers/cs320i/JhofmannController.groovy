@@ -13,6 +13,12 @@ class JhofmannController {
     }
 
     @Secured('ROLE_USER')
+    def entry()
+    {
+        def entry = CalendarEntry.findById(Long.parseLong((String)params.entryID))
+        [entry: entry]
+    }
+    @Secured('ROLE_USER')
     def calendar()
     {
         def currentCalendar
@@ -66,7 +72,18 @@ class JhofmannController {
         render (view:'saveAddCal.gsp')
 
     }
+    @Secured('ROLE_USER')
+    def saveDelCal()
+    {
+        def userPrincipal = request.getUserPrincipal()
+        def entry = CalendarEntry.findById(Long.parseLong((String)params.entryID))
+        def user = Player.findByUsername(userPrincipal.name)
+        user.getCalendar().removeFromEntries(entry)
+        entry.delete()
+        user.save(flush: true)
+        render (view:'saveDelCal.gsp')
 
+    }
 
 
 }
