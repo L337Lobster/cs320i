@@ -112,21 +112,23 @@ class CurCal {
     }
     def generateTable()
     {
+        println("")
         int start = firstDayOfWeek-1
-        int count = 0, count2 = 0
+        int count = 1, count2 = 0
+        println(start-1)
         for(int i = 0; i < 6; i++)
         {
             for(int j =0; j < 7; j++)
             {
-                if(count2 < start-1)
+                if(count2 < start)
                 {
-                    println("Count2: " + count2 +" start: " + start)
                     table[i][j] = 0
                     count2++
                 }
                 else
                 {
                     table[i][j] = count++
+                    println(i + ","+ j + ": "+ table[i][j])
                 }
                 if(count > lastDay)
                 {
@@ -140,6 +142,7 @@ class CurCal {
             }
 
         }
+        println("Table[0][0]: " + table[0][0])
         if(prevMonth > 0)
         {
             for(int i = prevMonth-1; i >= 0; i--)
@@ -156,6 +159,7 @@ class CurCal {
         }
 
         println("" + month + ": " + table)
+        println("LastDay: " +lastDay + " FirstDayOfWeek: " + firstDayOfWeek + " PrevMonth: " + prevMonth + " Count2: " + count2 +" start: " + start)
 
     }
 
